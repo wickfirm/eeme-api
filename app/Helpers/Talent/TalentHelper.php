@@ -80,6 +80,10 @@ class TalentHelper {
                 $url = env( 'HTTPS_REQUEST' ) . $url;
                 return [ Gru::MAIN_DOMIAN , null , $url ];
             }
+            elseif ( isset( $host[1] ) && $host[1] == 'vercel' && isset( $host[2] ) && $host[2] == 'app' ) {
+                $url = env( 'HTTPS_REQUEST' ) . $url;
+                return [ Gru::MAIN_DOMIAN , null , $url ]; // vercel staging domain
+            }
             else {
                 return [ Gru::NOT_DEFINED_DOMAIN , null , null ]; //no agency for the requested url
             }
